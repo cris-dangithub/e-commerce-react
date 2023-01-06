@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductInCart from '../components/Cart/ProductInCart';
+import { getUserCart } from '../store/slices/cart.slice';
 import { purchaseCart } from '../store/slices/purchases.slice';
 
 const Cart = () => {
@@ -9,7 +10,10 @@ const Cart = () => {
   const handleButton = () => {
     dispatch(purchaseCart())
   }
-  
+  useEffect(() => {
+    dispatch(getUserCart())
+  }, [])
+
   console.log(cart);
   return (
     <article>

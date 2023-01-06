@@ -42,10 +42,7 @@ function App() {
   }, []) 
   */
   // Get cart and purchases
-  useEffect(() => {
-    dispatch(getUserCart())
-    dispatch(getPurchases())
-  }, [])
+
   return (
     <div className="App">
       <Navbar />

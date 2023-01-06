@@ -27,17 +27,13 @@ const Home = () => {
     setFilterProducts([...products])
   }
 
-  useEffect(() => {
-    dispatch(getUserCart())
-    dispatch(getPurchases())
-  }, [])
+  
   useEffect(() => {
     products && !currentInputValue ?
       setFilterProducts([...products])
       :
       setFilterProducts(products?.filter(product => product.title.toLowerCase().includes(currentInputValue)))
   }, [products])
-  console.log(filterProducts);
 
   return (
     <div>
