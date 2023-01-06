@@ -27,13 +27,14 @@ const Home = () => {
     setFilterProducts([...products])
   }
 
-  
+
   useEffect(() => {
     products && !currentInputValue ?
       setFilterProducts([...products])
       :
       setFilterProducts(products?.filter(product => product.title.toLowerCase().includes(currentInputValue)))
   }, [products])
+
 
   return (
     <div>
@@ -46,8 +47,18 @@ const Home = () => {
         <OrderProducts />
       </section>
       <div>
-        <input value={currentInputValue} onChange={handleChange} type="text" id='input' placeholder='What are you looking for?' />
-        <button onClick={handleInputClick}>X</button> {/*  */}
+        <input value={currentInputValue}
+          onChange={handleChange}
+          type="text"
+          id='input'
+          placeholder='What are you looking for?'
+        />
+        <button
+          onClick={handleInputClick}
+          {...{ disabled: currentInputValue ? false : true }}
+        >
+          <i className="fa-solid fa-circle-xmark"></i>
+        </button>
 
       </div>
 

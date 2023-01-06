@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import usePetitions from '../hooks/usePetitions'
 
 const Login = () => {
@@ -14,10 +15,16 @@ const Login = () => {
     loginUser(data, reset, objReset)
   }
 
-
-
   return (
-    <div>
+    <article>
+      <h2>Welcome! Enter your email and password to continue</h2>
+      <section>
+        <h3>Test data</h3>
+        <ul>
+          <li>cristiandaniel@gmail.com</li>
+          <li>cristian123</li>
+        </ul>
+      </section>
       <form onSubmit={handleSubmit(submit)}>
         <div>
           <label htmlFor="email">Email</label>
@@ -29,8 +36,13 @@ const Login = () => {
         </div>
         <button>Login</button>
       </form>
+      <footer>
+        <p>
+          Don't have an account? <Link to='/signup'>Sign up</Link>
+        </p>
+      </footer>
 
-    </div>
+    </article>
   )
 }
 

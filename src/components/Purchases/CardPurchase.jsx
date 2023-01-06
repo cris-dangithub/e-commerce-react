@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getImgsById } from '../../utils/getImgsById'
@@ -31,7 +31,7 @@ const CardPurchase = ({ purchase }) => {
                 <img
                   src=
                   {
-                    getImgsById(products, product).productImgs[0]
+                    getImgsById(products, product)?.productImgs[0]
                   }
                   alt="" />
                 <h3>{product.title}</h3>

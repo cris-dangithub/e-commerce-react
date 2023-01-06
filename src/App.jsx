@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import ProtectedRoutes from './components/ProtectedRoutes'
+import ProtectSignUp from './components/ProtectSignUp'
 import Footer from './components/shared/Footer'
 import Navbar from './components/shared/Navbar'
 import Cart from './pages/Cart'
@@ -11,6 +12,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import ProductInfo from './pages/ProductInfo'
 import Purchases from './pages/Purchases'
+import SignUp from './pages/SignUp'
 import User from './pages/User'
 import { getUserCart } from './store/slices/cart.slice'
 import { getAllProducts } from './store/slices/products.slice'
@@ -49,6 +51,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route element={<ProtectSignUp />} >
+          <Route path='/signup' element={<SignUp />} />
+        </Route>
         <Route element={<ProtectedRoutes />}>
           <Route path='/user' element={<User />} />
           <Route path='/purchases' element={<Purchases />} />

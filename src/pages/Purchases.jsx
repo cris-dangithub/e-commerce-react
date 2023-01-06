@@ -15,7 +15,7 @@ const Purchases = () => {
       <h2>My purchases</h2>
       <div>
         {
-          reversePurchases?.map(purchase => (
+          reversePurchases?.reverse().map(purchase => (
             <CardPurchase
               key={purchase.id}
               purchase={purchase}
