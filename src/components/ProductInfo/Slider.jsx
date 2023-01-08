@@ -17,9 +17,7 @@ const Slider = ({ product }) => {
       setCurrentImgIdx(currentImgIdx + 1)
   }
 
-  const objSlider = {
-    width: '300px'
-  }
+
   const objSliderHeader = {
     width: `calc(var(--width-slider) * ${product?.productImgs.length})`
   }
@@ -28,7 +26,7 @@ const Slider = ({ product }) => {
   }
 
   return (
-    <article className='c-slider' style={objSlider}>
+    <article className='c-slider' >
       <header className='slider__header' style={objSliderHeader}>
         <ul className='slider__main-imgs-container' style={objMainImgs}>
           {
@@ -53,7 +51,7 @@ const Slider = ({ product }) => {
           {
             product?.productImgs.map((img, idx) => (
               <li key={idx} className='slider__pages-item'>
-                <img className='slider__pages-img' src={img} alt="" />
+                <img className={`slider__pages-img ${currentImgIdx === idx ? 'slider__pages-img--active' : ''}`} src={img} alt="" />
               </li>
             ))
           }
