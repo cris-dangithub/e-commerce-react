@@ -1,0 +1,18 @@
+.filter-form-price--category {
+  gap: 0.3em;
+}
+
+.filter-form-price__item--category {
+  border-radius: 0.5em;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-form-price__item--category--active {
+  color: #fff;
+  background-color: #009c0dbe;
+}
+
+.filter-form-price__item--category--inactive:hover {
+  color: #fff;
+  background-color: #ff5c5c;
+}

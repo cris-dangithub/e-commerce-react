@@ -1,0 +1,26 @@
+.c-order-products {
+  display: grid;
+  gap: 0.5em;
+}
+
+.filter-price__btn--order {
+  border: 2px solid #d6d6d6;
+}
+
+.filter-price__btn--order--active {
+  background-color: #009c0dbe;
+  border: none;
+  color: #fff;
+}
+.filter-price__btn--order--active-default {
+  background-color: #ff5c5c;
+  border: none;
+  color: #fff;
+}
+.filter-price__btn--order--inactive:hover {
+  background-color: #d6d6d6;
+}
+
+/* .filter-price__btn--order-descending {
+  background-color: #009c0dbe;
+} */

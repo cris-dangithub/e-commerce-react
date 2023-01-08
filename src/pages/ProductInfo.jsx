@@ -1,9 +1,19 @@
+/* ============================ IMPORTS ============================ */
+//Hooks
 import React, { useEffect, useState } from 'react'
+//Redux
 import { useSelector } from 'react-redux'
+//Router
 import { useParams } from 'react-router-dom'
+//Components
 import CardProduct from '../components/Home/CardProduct'
 import ProductDescription from '../components/ProductInfo/ProductDescription'
+import Slider from '../components/ProductInfo/Slider'
+//Custom hooks
 import usePetitions from '../hooks/usePetitions'
+//CSS
+import './styles/ProductInfo.css'
+/* ======================================================================== */
 
 const ProductInfo = () => {
   const [product, setProduct] = useState()
@@ -22,9 +32,14 @@ const ProductInfo = () => {
       setSimilarProducts(similarProductsArray)
     }
   }, [products, product])
-
+  console.log(product);
   return (
-    <article>
+    <article className='c-product-info'>
+      <section className='product-info__slider'>
+        <Slider
+          product={product}
+        />
+      </section>
       <ProductDescription
         product={product}
       />
@@ -33,11 +48,11 @@ const ProductInfo = () => {
         <div>
           {
             similarProducts?.map(similarProduct => (
-            <CardProduct
-              key={similarProduct.id}
-              product={similarProduct}
-            />
-          ))
+              <CardProduct
+                key={similarProduct.id}
+                product={similarProduct}
+              />
+            ))
           }
         </div>
       </section>

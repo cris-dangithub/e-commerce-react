@@ -1,0 +1,16 @@
+.App {
+  position: relative;
+  z-index: -10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between ;
+  background-color: #fff;
+}
+.App__routes-container {
+  padding-bottom: 2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+

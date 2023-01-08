@@ -1,19 +1,29 @@
+/* ============================ IMPORTS ============================ */
+//Hooks
 import React, { useEffect } from 'react'
+//Redux
 import { useDispatch, useSelector } from 'react-redux'
-import CardPurchase from '../components/Purchases/CardPurchase';
+import { marginActive } from '../store/slices/marginBottomRoute.slice';
+import { getAllProducts } from '../store/slices/products.slice';
 import { getPurchases } from '../store/slices/purchases.slice';
-
+//Components
+import CardPurchase from '../components/Purchases/CardPurchase';
+//CSS
+import './styles/Purchases.css'
+/* ======================================================================== */
 const Purchases = () => {
   const { purchases } = useSelector(state => state) 
   const dispatch = useDispatch()
   const reversePurchases = purchases && [...purchases]
   useEffect(() => {
     dispatch(getPurchases())
+    dispatch(getAllProducts())
+    dispatch(marginActive())
   }, [])
   return (
-    <article>
-      <h2>My purchases</h2>
-      <div>
+    <article className='c-purchases'>
+      <h2 className='purchases__title'>My purchases</h2>
+      <div className='purchases__cards-container'>
         {
           reversePurchases?.reverse().map(purchase => (
             <CardPurchase

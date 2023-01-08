@@ -1,0 +1,10 @@
+.purchases__title {
+  font-size: 2rem;
+  color: #515151;
+  margin-bottom: 0.5em;
+}
+
+.purchases__cards-container {
+  display: grid;
+  gap: 2em;
+}

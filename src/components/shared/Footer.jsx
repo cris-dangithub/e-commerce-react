@@ -1,15 +1,30 @@
-import React from 'react'
+/* ============================ IMPORTS ============================ */
+//CSS
+import './styles/Footer.css'
+/* ======================================================================== */
 
 const Footer = () => {
   return (
-    <article>
-      <h2>All rights reserved ©</h2>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/cristian-munoz-/" target='_blank'>linkedin</a></li>
-        <li><a href="https://portfolio-cris.netlify.app/" target='_blank'>Portfolio</a></li>
-        <li><a href="https://github.com/cris-dangithub/e-commerce-react" target='_blank'>github</a></li>
+    <footer className='c-footer'>
+      <h2 className='footer__title'>All rights reserved ©</h2>
+      <ul className='footer__list'>
+        <li className='footer__item'>
+          <a className='footer__icon-btn' href="https://www.linkedin.com/in/cristian-munoz-/" target='_blank'>
+            <i className="fa-brands fa-linkedin-in"></i>
+          </a>
+        </li>
+        <li className='footer__item'>
+          <a className='footer__icon-btn' href="https://portfolio-cris.netlify.app/" target='_blank'>
+            <i className="fa-solid fa-briefcase"></i>
+          </a>
+        </li>
+        <li className='footer__item'>
+          <a className='footer__icon-btn' href="https://github.com/cris-dangithub/e-commerce-react" target='_blank'>
+            <i className="fa-brands fa-github"></i>
+          </a>
+        </li>
       </ul>
-    </article>
+    </footer>
   )
 }
 

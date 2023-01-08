@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+/* ============================ IMPORTS ============================ */
+//Hooks
+import React, { useState } from 'react'
+//React Hook Form
 import { useForm } from 'react-hook-form'
+//Styles
+import './styles/FilterPrice.css'
+/* ======================================================================== */
 
 const FilterPrice = ({ currentFilterPrice, setCurrentFilterPrice }) => {
-  const dataToResetForm = {
-    from: '',
-    to: ''
-  }
   const [productsFilteredByPrice, setProductsFilteredByPrice] = useState()
-
+  const [filterShowed, setFilterShowed] = useState(true)
   const { register, handleSubmit, setValue } = useForm()
 
   const submit = data => {
@@ -31,20 +33,28 @@ const FilterPrice = ({ currentFilterPrice, setCurrentFilterPrice }) => {
     setValue('to', '0')
     setProductsFilteredByPrice()
   }
+  const handleShowFilter = () => {
+    setFilterShowed(!filterShowed)
+  }
   return (
-    <section>
-      <h3>Price</h3>
-      <form onSubmit={handleSubmit(submit)}>
-        <div>
-          <label htmlFor="from">From</label>
-          <input type="number" id='from' min='0' {...register('from')} />
+    <section className='c-filter-price'>
+      <h3 onClick={handleShowFilter} className='filter-price__title'>
+        <span className='filter-price__title-text'>Price</span>
+        <i
+          className={`filter-price__icon fa-solid fa-chevron-down ${filterShowed ? '' : 'filter-price__icon--hidde-options'}`}>
+        </i>
+      </h3>
+      <form className={`filter-form-price ${filterShowed ? '' : 'filter-form-price--hidde-options'}`} onSubmit={handleSubmit(submit)}>
+        <div className='filter-form-price__item'>
+          <label className='filter-form-price__label' htmlFor="from">From</label>
+          <input className='filter-form-price__input' type="number" id='from' min='0' max='5000' {...register('from')} />
         </div>
-        <div>
-          <label htmlFor="to">To</label>
-          <input type="number" id='to' min='0' {...register('to')} />
+        <div className='filter-form-price__item'>
+          <label className='filter-form-price__label' htmlFor="to">To</label>
+          <input className='filter-form-price__input' type="number" id='to' min='0' max='5000' {...register('to')} />
         </div>
-        <section>
-          <h4>
+        <section className='filter-price__info'>
+          <h4 className='filter-price__count'>
             {
               productsFilteredByPrice ?
                 `$${currentFilterPrice.from} - $${currentFilterPrice.to}`
@@ -52,16 +62,17 @@ const FilterPrice = ({ currentFilterPrice, setCurrentFilterPrice }) => {
                 ''
             }
           </h4>
+          <div className='filter-price__buttons'>
+            {
+              productsFilteredByPrice ?
+                <button className='filter-price__btn filter-price__btn--delete' onClick={handleDelete}>Delete filter</button>
+                :
+                <></>
+            }
+            <button className='filter-price__btn filter-price__btn--apply'>Apply</button>
+          </div>
+
         </section>
-        <div>
-          {
-            productsFilteredByPrice ?
-              <button onClick={handleDelete}>Delete filter</button>
-              :
-              <></>
-          }
-          <button>Apply</button>
-        </div>
       </form>
     </section>
   )

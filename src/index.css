@@ -5,32 +5,59 @@
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  margin: 0;
+  background-color: #d6d6d6;
+  position: relative;
+  z-index: -30;
+}
+
+#root {
+  position: relative;
+  z-index: -20;
+}
+
 h1,
 h2,
 h3,
-h4 {
+h4,
+ul,
+p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
 img {
-  width: 150px;
   /*  */
   display: block;
 }
 
-ul,
-.temporal {
-  border: 1px solid black;
-  /*  */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 button {
   cursor: pointer;
   border: none;
   color: inherit;
+  background-color: inherit;
+  padding: 0;
 }
 
-.fa-solid {
+input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.fa-solid,
+.fa-regular,
+.fa-brands {
   display: block;
 }

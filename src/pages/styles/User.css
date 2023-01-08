@@ -1,0 +1,14 @@
+.user__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.user__icon {
+  font-size: 8rem;
+  color: #515151;
+}
+
+.user__btn {
+  width: 100%;
+}

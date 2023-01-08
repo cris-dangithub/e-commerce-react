@@ -1,0 +1,31 @@
+.c-footer {
+  padding: 2em;
+  background-color: #3c3c3b;
+  color: #fff;
+  text-align: center;
+  display: grid;
+  gap: 0.5em;
+}
+
+.footer__title {
+  font-size: 1.2rem;
+}
+
+.footer__list {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  font-size: 1.3rem;
+}
+
+.footer__item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  color: #3c3c3b;
+}

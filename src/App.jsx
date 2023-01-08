@@ -1,8 +1,12 @@
-import axios from 'axios'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+/* ============================ IMPORTS ============================ */
+//Hooks
+import { useEffect, useState } from 'react'
+//React Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts } from './store/slices/products.slice'
+//React Route
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
+//Components
 import ProtectedRoutes from './components/ProtectedRoutes'
 import ProtectSignUp from './components/ProtectSignUp'
 import Footer from './components/shared/Footer'
@@ -14,53 +18,39 @@ import ProductInfo from './pages/ProductInfo'
 import Purchases from './pages/Purchases'
 import SignUp from './pages/SignUp'
 import User from './pages/User'
-import { getUserCart } from './store/slices/cart.slice'
-import { getAllProducts } from './store/slices/products.slice'
-import { getPurchases } from './store/slices/purchases.slice'
+//CSS
+import './App.css'
+/* ======================================================================== */
 
 function App() {
+  const { products, marginBottomRoute } = useSelector(state => state)
   const dispatch = useDispatch()
-
+  const [allProductsQuantity, setAllProductsQuantity] = useState()
   useEffect(() => {
     dispatch(getAllProducts())
   }, [])
-
-
-  //Creación de nuevo usuario
-  /* 
   useEffect(() => {
-    const URL = `https://e-commerce-api.academlo.tech/api/v1/users`
-    const data = {
-      firstName: "Cristian",
-      lastName: "Muñoz",
-      email: "cristiandaniel@gmail.com",
-      password: "cristian123",
-      phone: "3112499796",
-      role: "admin"
-    }
-    axios.post(URL, data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  }, []) 
-  */
-  // Get cart and purchases
+    if (!allProductsQuantity && products) setAllProductsQuantity(products.length)
+  }, [products])
 
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route element={<ProtectSignUp />} >
-          <Route path='/signup' element={<SignUp />} />
-        </Route>
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/user' element={<User />} />
-          <Route path='/purchases' element={<Purchases />} />
-          <Route path='/cart' element={<Cart />} />
-        </Route>
-        <Route path='/product/:id' element={<ProductInfo />} />
-      </Routes>
+      <main className='App__routes-container' style={{marginBottom: marginBottomRoute ? 'auto' : '0'}}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route element={<ProtectSignUp />} >
+            <Route path='/signup' element={<SignUp />} />
+          </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path='/user' element={<User />} />
+            <Route path='/purchases' element={<Purchases />} />
+            <Route path='/cart' element={<Cart allProductsQuantity={allProductsQuantity} />} />
+          </Route>
+          <Route path='/product/:id' element={<ProductInfo />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   )

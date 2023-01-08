@@ -13,10 +13,13 @@ const cartSlice = createSlice({
 export const { setCartGlobal } = cartSlice.actions
 export default cartSlice.reducer
 
-export const getUserCart = () => (dispatch) => {
+export const getUserCart = (product, newQuantityPlus) => (dispatch) => {
   const URL = `https://e-commerce-api.academlo.tech/api/v1/cart`
   axios.get(URL, getConfig())
-    .then(res => dispatch(setCartGlobal(res.data.data.cart.products))) 
+    .then(res => {
+      dispatch(setCartGlobal(res.data.data.cart.products))
+      if (product) dispatch(addProductCart(res.data.data.cart.products, product, newQuantityPlus))
+    })
     .catch(err => console.log(err.response.data.message))
 }
 
@@ -30,12 +33,15 @@ export const addProductCart = (cart, product, newQuantityPlus = 1) => (dispatch)
     .then(res => dispatch(getUserCart()))
     .catch(err => {
       if (err.response.data.message === 'You already added this product to the cart') {
-        console.log(product);
-        const dataToUpdate = {
-          id: product.id,
-          newQuantity: searchProductFromCartById(cart, product).productsInCart.quantity + newQuantityPlus
+        if (cart) {
+          const dataToUpdate = {
+            id: product.id,
+            newQuantity: searchProductFromCartById(cart, product).productsInCart.quantity + newQuantityPlus
+          }
+          dispatch(updateUserCart(dataToUpdate))
+        } else {
+          dispatch(getUserCart(product, newQuantityPlus))
         }
-        dispatch(updateUserCart(dataToUpdate))
       }
     })
 }
