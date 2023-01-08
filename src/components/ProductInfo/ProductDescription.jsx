@@ -1,6 +1,12 @@
+/* ============================ IMPORTS ============================ */
+//Hooks
 import React, { useState } from 'react'
+//Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductCart } from '../../store/slices/cart.slice'
+//CSS
+import './styles/ProductDescription.css'
+/* ======================================================================== */
 
 const ProductDescription = ({ product }) => {
   const [counter, setCounter] = useState(1)
@@ -18,23 +24,26 @@ const ProductDescription = ({ product }) => {
   }
 
   return (
-    <article>
-      <h2>{product?.title}</h2>
-      <p>{product?.description}</p>
-      <footer>
-        <section>
-          <span>Price</span>
-          <h3>{product?.price}</h3>
+    <article className='c-product-description'>
+      <h2 className='purchases__title'>{product?.title}</h2>
+      <p className='product-description__description'>{product?.description}</p>
+      <footer className='product-description__footer'>
+        <section className='product-description__price-cntainer'>
+          <span className='card-product__price-text'>Price</span>
+          <h3 className='product-description__price-nmbr'>{product?.price}</h3>
         </section>
-        <div>
-          <span>Quantity</span>
-          <div>
-            <button onClick={handleMinus}>-</button>
-            <span>{counter}</span>
-            <button onClick={handlePlus}>+</button>
+        <div className='product-description__quantity-container'>
+          <span className='card-product__price-text'>Quantity</span>
+          <div className='product-description__quantity-btns-container'>
+            <button className='product-description__quantity-btn' onClick={handleMinus}>-</button>
+            <span className='product-description__quantity-nmbr'>{counter}</span>
+            <button className='product-description__quantity-btn' onClick={handlePlus}>+</button>
           </div>
         </div>
-        <button onClick={handleAddToCart}>Add to cart <i className="fa-solid fa-cart-plus"></i></button>
+        <button onClick={handleAddToCart} className='product-description__add-btn'>
+          <span>Add to cart</span>
+          <i className="fa-solid fa-cart-plus"></i>
+        </button>
       </footer>
     </article>
   )

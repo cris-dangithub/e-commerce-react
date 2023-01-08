@@ -76,9 +76,15 @@
   border-color: #fff;
   transition: border-style 0.3s, border-color 0.3s;
   padding: 0.2em;
+  cursor: pointer;
 }
 
 .slider__pages-img--active {
   border-style: solid;
   border-color: #ff5c5c;
+}
+
+.slider__pages-img--inactive:hover {
+  border-style: solid;
+  border-color: #d6d6d6;
 }

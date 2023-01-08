@@ -1,0 +1,26 @@
+.c-product-description {
+  display: grid;
+  gap: 0.5em;
+}
+
+.product-description__description {
+  color: #515151;
+}
+
+.product-description__footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+
+
+
+
+.product-description__add-btn {
+  grid-column: span 2;
+  background-color: #ff5c5c;
+  padding: 0.5em 0;
+  border-radius: 0.5em;
+  margin-top: 1.5em;
+}

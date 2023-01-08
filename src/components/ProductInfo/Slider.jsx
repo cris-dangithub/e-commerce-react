@@ -1,5 +1,9 @@
+/* ============================ IMPORTS ============================ */
+//Hooks
 import React, { useState } from 'react'
+//CSS
 import './styles/Slider.css'
+/* ======================================================================== */
 
 const Slider = ({ product }) => {
   const [currentImgIdx, setCurrentImgIdx] = useState(0)
@@ -15,6 +19,9 @@ const Slider = ({ product }) => {
       setCurrentImgIdx(0)
       :
       setCurrentImgIdx(currentImgIdx + 1)
+  }
+  const handleImgClick = idx => {
+    if (currentImgIdx !== idx) setCurrentImgIdx(idx)
   }
 
 
@@ -51,7 +58,12 @@ const Slider = ({ product }) => {
           {
             product?.productImgs.map((img, idx) => (
               <li key={idx} className='slider__pages-item'>
-                <img className={`slider__pages-img ${currentImgIdx === idx ? 'slider__pages-img--active' : ''}`} src={img} alt="" />
+                <img
+                  className={
+                    `slider__pages-img ${currentImgIdx === idx ? 'slider__pages-img--active' : 'slider__pages-img--inactive'}`}
+                  src={img} alt=""
+                  onClick={() => handleImgClick(idx)}
+                />
               </li>
             ))
           }
