@@ -78,58 +78,60 @@ const Home = () => {
           />
         </div>
       </section>
-      <section className='home__input-search-container'>
-        <div className='home__input-top'>
-          <input className='home__input-search filter-form-price__input'
-            value={currentInputValue}
-            onChange={handleChange}
-            type="text"
-            id='input'
-            placeholder='What are you looking for?'
-          />
-          <button
-            className={
-              `home__input-search-delete-btn 
+      <main className='home__main'>
+        <section className='home__input-search-container'>
+          <div className='home__input-top'>
+            <input className='home__input-search filter-form-price__input'
+              value={currentInputValue}
+              onChange={handleChange}
+              type="text"
+              id='input'
+              placeholder='What are you looking for?'
+            />
+            <button
+              className={
+                `home__input-search-delete-btn 
               ${!currentInputValue ? 'home__input-search-delete-btn--disabled' : ''}`}
-            onClick={handleInputClick}
-            {...{ disabled: currentInputValue ? false : true }}
-          >
-            <i className="fa-solid fa-circle-xmark"></i>
-          </button>
-        </div>
-        <div className='home__input-bottom'>
-          <button className='home__input-filter-btn' onClick={() => setMenuShowed(true)} >
-            <i className="fa-solid fa-filter"></i>
-            <span className='home__input-filter-text'>Filters</span>
-          </button>
-        </div>
-      </section>
-      <div className="home__products-container">
-        {
-          filterProducts?.filter(filterProduct => {
-            const condition1 = +filterProduct.price >= currentFilterPrice.from
-            const condition2 = +filterProduct.price <= currentFilterPrice.to
-            return condition1 && condition2
-          }).length !== 0
-            ?
+              onClick={handleInputClick}
+              {...{ disabled: currentInputValue ? false : true }}
+            >
+              <i className="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+          <div className='home__input-bottom'>
+            <button className='home__input-filter-btn' onClick={() => setMenuShowed(true)} >
+              <i className="fa-solid fa-filter"></i>
+              <span className='home__input-filter-text'>Filters</span>
+            </button>
+          </div>
+        </section>
+        <div className="home__products-container">
+          {
             filterProducts?.filter(filterProduct => {
               const condition1 = +filterProduct.price >= currentFilterPrice.from
               const condition2 = +filterProduct.price <= currentFilterPrice.to
               return condition1 && condition2
-            }).map(product => (
-              <CardProduct
-                key={product.id}
-                product={product}
-                firstBtnClicked={firstBtnClicked}
-                setFirstBtnClicked={setFirstBtnClicked}
-              />
-            ))
-            :
-            <h2 className='home__products-not-found'>
-              Not exist products to this filter
-            </h2>
-        }
-      </div>
+            }).length !== 0
+              ?
+              filterProducts?.filter(filterProduct => {
+                const condition1 = +filterProduct.price >= currentFilterPrice.from
+                const condition2 = +filterProduct.price <= currentFilterPrice.to
+                return condition1 && condition2
+              }).map(product => (
+                <CardProduct
+                  key={product.id}
+                  product={product}
+                  firstBtnClicked={firstBtnClicked}
+                  setFirstBtnClicked={setFirstBtnClicked}
+                />
+              ))
+              :
+              <h2 className='home__products-not-found'>
+                Not exist products to this filter
+              </h2>
+          }
+        </div>
+      </main>
     </article>
   )
 }
