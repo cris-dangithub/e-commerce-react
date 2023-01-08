@@ -25,7 +25,7 @@ const Home = () => {
     to: Infinity
   })
   const [filterProducts, setFilterProducts] = useState()
-  const { products, cart } = useSelector(state => state)
+  const { products } = useSelector(state => state)
   const dispatch = useDispatch()
   const handleChange = e => {
     const inputValue = e.target.value.toLowerCase().trim()

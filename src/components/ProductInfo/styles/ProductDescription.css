@@ -11,16 +11,32 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.product-description__price-cntainer,
+.product-description__quantity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.product-description__price-nmbr {
+  color: #515151;
+}
 
 
-
-
-
+.product-description__quantity-btns-container {
+  width: 100px;
+  align-self: flex-start;
+}
 
 .product-description__add-btn {
   grid-column: span 2;
   background-color: #ff5c5c;
-  padding: 0.5em 0;
+  color: #fff;
+  padding: 1em 0;
   border-radius: 0.5em;
   margin-top: 1.5em;
+  gap: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

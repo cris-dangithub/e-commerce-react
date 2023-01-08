@@ -43,9 +43,9 @@ const ProductInfo = () => {
       <ProductDescription
         product={product}
       />
-      <section>
-        <h2>Discover similar items</h2>
-        <div>
+      <section className='product-similar'>
+        <h2 className='product-similar__title'>Discover similar items</h2>
+        <div className='home__products-container'>
           {
             similarProducts?.map(similarProduct => (
               <CardProduct

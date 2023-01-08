@@ -30,14 +30,14 @@ const ProductDescription = ({ product }) => {
       <footer className='product-description__footer'>
         <section className='product-description__price-cntainer'>
           <span className='card-product__price-text'>Price</span>
-          <h3 className='product-description__price-nmbr'>{product?.price}</h3>
+          <h3 className='product-description__price-nmbr'>$ {product?.price}</h3>
         </section>
         <div className='product-description__quantity-container'>
           <span className='card-product__price-text'>Quantity</span>
-          <div className='product-description__quantity-btns-container'>
-            <button className='product-description__quantity-btn' onClick={handleMinus}>-</button>
+          <div className='product-in-cart__quantity-container product-description__quantity-btns-container' >
+            <button className='product-in-cart__btn-quantity' onClick={handleMinus}>-</button>
             <span className='product-description__quantity-nmbr'>{counter}</span>
-            <button className='product-description__quantity-btn' onClick={handlePlus}>+</button>
+            <button className='product-in-cart__btn-quantity' onClick={handlePlus}>+</button>
           </div>
         </div>
         <button onClick={handleAddToCart} className='product-description__add-btn'>

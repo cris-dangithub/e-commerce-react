@@ -3,3 +3,9 @@
   gap: 2em;
 }
 
+.product-similar__title {
+  color: #ff5c5c;
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
