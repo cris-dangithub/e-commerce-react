@@ -12,7 +12,7 @@ import CardPurchase from '../components/Purchases/CardPurchase';
 import './styles/Purchases.css'
 /* ======================================================================== */
 const Purchases = () => {
-  const { purchases } = useSelector(state => state) 
+  const { purchases } = useSelector(state => state)
   const dispatch = useDispatch()
   const reversePurchases = purchases && [...purchases]
   useEffect(() => {
@@ -22,8 +22,8 @@ const Purchases = () => {
   }, [])
   return (
     <article className='c-purchases'>
-      <h2 className='purchases__title'>My purchases</h2>
       <div className='purchases__cards-container'>
+        <h2 className='purchases__title'>My purchases</h2>
         {
           reversePurchases?.reverse().map(purchase => (
             <CardPurchase

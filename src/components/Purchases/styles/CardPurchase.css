@@ -2,6 +2,7 @@
   border: 1px solid #d6d6d6;
   border-radius: 1em;
   overflow: hidden;
+  margin-bottom: 1em;
 }
 
 .card-purchase__header {
@@ -14,6 +15,7 @@
   gap: 1em;
   display: grid;
 }
+
 .card-purchase__item {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 60px;
@@ -26,13 +28,15 @@
   height: 50px;
   width: 50px;
   object-fit: contain;
+  justify-self: center;
 }
+
 .card-purchase__product-name {
   font-size: 0.8rem;
 }
+
 .card-purchase__quantity {
   border: 1px solid #d6d6d6;
-
   padding: 0.2em 0.5em;
   text-align: center;
   justify-self: center;
@@ -40,7 +44,38 @@
   border-radius: 0.4em;
   font-weight: 600;
 }
+
 .card-purchase__price {
   justify-self: flex-end;
   font-weight: 500;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 600px) {
+  .card-purchase__product-name {
+    font-size: 1rem;
+  }
+
+  .card-purchase__item {
+    grid-template-columns: 1fr 3fr 1fr 80px;
+  }
+  .card-purchase__price {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 760px) {
+  .card-purchase__product-name {
+    font-size: 1.2rem;
+  }
+
+  .card-purchase__quantity {
+    font-size: 1rem;
+  }
+  .card-purchase__item {
+    grid-template-columns: 1fr 3fr 1fr 100px;
+  }
+  .card-purchase__price {
+    font-size: 1.1rem;
+  }
 }

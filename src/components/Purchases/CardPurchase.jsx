@@ -43,7 +43,7 @@ const CardPurchase = ({ purchase }) => {
                 alt="" />
               <h3 className='card-purchase__product-name'>{product.title}</h3>
               <span className='card-purchase__quantity'>{product.productsInCart.quantity}</span>
-              <span className='card-purchase__price'>{product.price}</span>
+              <span className='card-purchase__price'>$ {product.price}</span>
             </li>
           ))
         }
