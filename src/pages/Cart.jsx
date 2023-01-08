@@ -27,18 +27,21 @@ const Cart = ({ allProductsQuantity }) => {
 
   return (
     <article className='c-cart'>
-      <header className='cart__header'>
-        <h2 className='purchases__title'>Shopping Cart</h2>
-      </header>
       <div className='cart__products-container'>
+        <h2 className='purchases__title'>Shopping Cart</h2>
         {
-          cart?.map(cartProduct => (
-            <ProductInCart
-              key={cartProduct.id}
-              cartProduct={cartProduct}
-              allProductsQuantity={allProductsQuantity}
-            />
-          ))
+          cart ?
+            cart.map(cartProduct => (
+              <ProductInCart
+                key={cartProduct.id}
+                cartProduct={cartProduct}
+                allProductsQuantity={allProductsQuantity}
+              />
+            ))
+            :
+            <h2 className='home__products-not-found'>
+              There isn't any product in the cart, please add products in Home =)
+            </h2>
         }
       </div>
       <footer className='cart-footer'>
@@ -57,7 +60,7 @@ const Cart = ({ allProductsQuantity }) => {
         <button
           className='cart-footer__btn-checkout'
           onClick={handleButton}
-          {...{disabled: cart ? false : true}}
+          {...{ disabled: cart ? false : true }}
         >
           Checkout
         </button>

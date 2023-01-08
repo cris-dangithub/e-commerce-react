@@ -35,17 +35,19 @@ const ProductInfo = () => {
   console.log(product);
   return (
     <article className='c-product-info'>
-      <section className='product-info__slider'>
-        <Slider
+      <header className='product-info__header'>
+        <section className='product-info__slider'>
+          <Slider
+            product={product}
+          />
+        </section>
+        <ProductDescription
           product={product}
         />
-      </section>
-      <ProductDescription
-        product={product}
-      />
+      </header>
       <section className='product-similar'>
         <h2 className='product-similar__title'>Discover similar items</h2>
-        <div className='home__products-container'>
+        <div className='home__products-container product-similar__container'>
           {
             similarProducts?.map(similarProduct => (
               <CardProduct

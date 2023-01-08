@@ -1,11 +1,26 @@
 .c-product-info {
+  max-width: 1060px;
+  margin: auto;
+  display: grid;
+  gap: 4em;
+}
+.product-info__header {
   display: grid;
   gap: 2em;
 }
-
 .product-similar__title {
   color: #ff5c5c;
   margin-bottom: 0.5em;
   font-size: 1.2rem;
   text-transform: uppercase;
+}
+
+@media(min-width: 680px) {
+  .product-info__header {
+    grid-template-columns: 1fr 1fr;
+  }
+.product-similar__title {
+    text-align: center;
+  }
+  
 }
